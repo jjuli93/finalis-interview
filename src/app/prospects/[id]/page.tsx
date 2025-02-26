@@ -8,6 +8,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import { GoogleMapsEmbed } from "@next/third-parties/google";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -65,7 +66,13 @@ export default async function ProspectDetailPage({
         </Flex>
         <Separator />
         <Heading>Location information</Heading>
-        {/* TODO: google maps  */}
+        <GoogleMapsEmbed
+          apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? ""}
+          height={400}
+          width={"100%"}
+          mode="place"
+          q="Brooklyn Bridge,New York,NY"
+        />
         <Separator />
         <Heading>Bank information</Heading>
         <Flex gap={2}>

@@ -23,6 +23,7 @@ import {
   LuNotebookText,
   LuUser,
 } from "react-icons/lu";
+import LocationInput from "@/components/locationInput/locationInput";
 
 //TODO: Do we need to be logged in for this?
 
@@ -63,6 +64,9 @@ export default function NewProspectPage() {
           </StepsContent>
           <StepsContent index={1}>
             <Heading mb={4}>Location information</Heading>
+            <Field label="Address">
+              <LocationInput />
+            </Field>
           </StepsContent>
           <StepsContent index={2}>
             <Heading mb={4}>Bank information</Heading>
@@ -89,6 +93,7 @@ export default function NewProspectPage() {
               </Field>
             </Stack>
           </StepsContent>
+
           <StepsCompletedContent>All steps are complete!</StepsCompletedContent>
 
           <Group>
