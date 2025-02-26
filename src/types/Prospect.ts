@@ -1,12 +1,13 @@
 import { Invoice } from "./Invoice";
 
 // This could just be a boolean but I prefer having literals in case there are more statuses in the future
-type ProspectStatus = "pending" | "approved" | "declined";
+export type ProspectStatus = "pending" | "approved" | "declined";
 
 export type Prospect = {
+  id: string;
   name: string;
   lastName: string;
-  birthday: Date;
+  dateOfBirth: Date;
   email: string;
   phoneNumber: string;
   profilePhotoUrl: string;
