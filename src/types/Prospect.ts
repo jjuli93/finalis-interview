@@ -7,7 +7,7 @@ export type Prospect = {
   id: string;
   name: string;
   lastName: string;
-  dateOfBirth: Date;
+  birthDate: Date;
   email: string;
   phoneNumber: string;
   profilePhotoUrl: string;

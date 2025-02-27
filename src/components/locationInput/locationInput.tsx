@@ -6,12 +6,23 @@ import debounce from "lodash.debounce";
 import { useState } from "react";
 import { SingleValue } from "react-select";
 import { ClientOnly, Stack } from "@chakra-ui/react";
-import { GoogleMapsEmbed } from "@next/third-parties/google";
 import { PlaceType2 } from "@googlemaps/google-maps-services-js";
+import { Map } from "./components/map/map";
 
-export default function LocationInput() {
-  const [placeId, setPlaceId] = useState<string | undefined>();
-  console.log({ placeId });
+export type Location = {
+  location: { lat: number; lng: number };
+  fullAddress: string;
+  country: string;
+  city: string;
+};
+
+type Props = {
+  onChange?: (location: Location | null) => void;
+  invalid?: boolean;
+};
+
+export default function LocationInput({ onChange, invalid }: Props) {
+  const [address, setAddress] = useState<string | undefined>();
 
   const loadOptions = debounce(
     (
@@ -34,37 +45,55 @@ export default function LocationInput() {
     option: SingleValue<{ label: string; value: string }>
   ) => {
     if (option?.value) {
-      setPlaceId(option.label);
+      setAddress(option.label);
       const details = await getPlaceDetails(option.value);
-      console.log({ details });
       const location = details.geometry?.location;
       const fullAddress = option.label;
       const country = details.address_components?.find((component) =>
         component.types.includes(PlaceType2.country)
       );
-      const city = details.address_components?.find((component) =>
-        component.types.includes(PlaceType2.locality)
-      );
+      // TODO: double check if this implementation to get the city is OK
+      const city =
+        details.address_components?.find((component) =>
+          component.types.includes(PlaceType2.locality)
+        ) ||
+        details.address_components?.find((component) =>
+          component.types.includes(PlaceType2.administrative_area_level_2)
+        );
 
-      console.log({ location, fullAddress, country, city });
+      if (
+        !details.types?.includes(PlaceType2.street_address) ||
+        !location ||
+        !country ||
+        !city
+      ) {
+        onChange?.(null);
+      } else {
+        onChange?.({
+          location,
+          fullAddress,
+          country: country.long_name,
+          city: city.long_name,
+        });
+      }
     }
   };
 
   return (
-    <ClientOnly>
-      <Stack width="100%">
-        <AsyncSelect loadOptions={loadOptions} onChange={handleChange} />
-        {placeId && (
-          <GoogleMapsEmbed
-            apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? ""}
-            height={400}
-            width="100%"
-            mode="place"
-            zoom="15"
-            q={placeId}
-          />
-        )}
-      </Stack>
-    </ClientOnly>
+    <Stack width="100%">
+      <ClientOnly>
+        <AsyncSelect
+          loadOptions={loadOptions}
+          onChange={handleChange}
+          styles={{
+            control: (baseStyles) => ({
+              ...baseStyles,
+              borderColor: invalid ? "red" : "grey",
+            }),
+          }}
+        />
+      </ClientOnly>
+      {address && <Map address={address} />}
+    </Stack>
   );
 }

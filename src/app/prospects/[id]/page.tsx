@@ -54,7 +54,7 @@ export default async function ProspectDetailPage({
         <Heading>Personal information</Heading>
         <Flex gap={2}>
           <Text fontWeight="bold">Date of birth:</Text>
-          <Text>{prospect.dateOfBirth.toLocaleDateString()}</Text>
+          <Text>{prospect.birthDate.toLocaleDateString()}</Text>
         </Flex>
         <Flex gap={2}>
           <Text fontWeight="bold">Email:</Text>

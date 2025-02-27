@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { toaster } from "../chakra-snippets/toaster";
 
-function ImageUploaderContent() {
+function ImageInputContent() {
   const fileUpload = useFileUploadContext();
 
   const image =
@@ -58,22 +58,28 @@ function ImageUploaderContent() {
   );
 }
 
+type Props = {
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+};
+
 //TODO: make component props
-export default function ImageUploader() {
+export default function ImageInput({ inputProps }: Props) {
   function handleFileReject(e: FileUploadFileRejectDetails) {
     if (e.files.length) toaster.error({ description: "File not supported" });
   }
 
   return (
     <FileUploadRoot
+      invalid
       maxFiles={1}
       accept="image/*"
       maxFileSize={5000000}
       w="300px"
       h="300px"
       onFileReject={handleFileReject}
+      inputProps={inputProps}
     >
-      <ImageUploaderContent />
+      <ImageInputContent />
     </FileUploadRoot>
   );
 }
