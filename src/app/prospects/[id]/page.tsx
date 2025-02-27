@@ -11,6 +11,7 @@ import {
 import { GoogleMapsEmbed } from "@next/third-parties/google";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ProspectActions from "./_components/prospectActions/prospectActions";
 
 async function getProspect(id: string) {
   return prospects.find((prospect) => prospect.id === id);
@@ -48,7 +49,10 @@ export default async function ProspectDetailPage({
         <Heading size="4xl">
           {prospect.name} {prospect.lastName}
         </Heading>
-        <ProspectStatusBadge status={prospect.status} size="lg" />
+        <Flex gap={3}>
+          <ProspectStatusBadge status={prospect.status} size="lg" />
+          <ProspectActions prospect={prospect} />
+        </Flex>
       </Flex>
       <Heading>Personal information</Heading>
       <Flex gap={2}>
