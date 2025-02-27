@@ -66,12 +66,24 @@ export default async function ProspectDetailPage({
         </Flex>
         <Separator />
         <Heading>Location information</Heading>
+        <Flex gap={2}>
+          <Text fontWeight="bold">Country:</Text>
+          <Text>{prospect.country}</Text>
+        </Flex>
+        <Flex gap={2}>
+          <Text fontWeight="bold">City:</Text>
+          <Text>{prospect.city}</Text>
+        </Flex>
+        <Flex gap={2}>
+          <Text fontWeight="bold">Full address:</Text>
+          <Text>{prospect.fullAddress}</Text>
+        </Flex>
         <GoogleMapsEmbed
           apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? ""}
           height={400}
           width={"100%"}
           mode="place"
-          q="Brooklyn Bridge,New York,NY"
+          q={`${prospect.location.lat}, ${prospect.location.lng}`}
         />
         <Separator />
         <Heading>Bank information</Heading>

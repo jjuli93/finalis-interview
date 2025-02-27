@@ -47,10 +47,13 @@ export default function NewProspectForm() {
     formState: { errors },
     control,
     setValue,
+    watch,
   } = useForm<Inputs>({
     resolver: zodResolver(NewProspectFormSchema),
     mode: "onChange",
   });
+
+  console.log(watch("address"));
 
   const handleStepChange = async ({
     step: selectedStep,

@@ -14,7 +14,10 @@ export type Prospect = {
   country: string;
   city: string;
   fullAddress: string;
-  googleMapsLocation: string; //???
+  location: {
+    lat: number;
+    lng: number;
+  };
   bankName: string;
   bankAccountNumber: string;
   taxId: string;
