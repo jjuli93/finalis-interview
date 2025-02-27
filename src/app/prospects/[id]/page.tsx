@@ -27,93 +27,91 @@ export default async function ProspectDetailPage({
   if (!prospect) notFound();
 
   return (
-    <main>
-      <Stack>
-        <Breadcrumb.Root mb={4}>
-          <Breadcrumb.List>
-            <Breadcrumb.Item>
-              <Breadcrumb.Link asChild>
-                <Link href={"/prospects"}>Prospects</Link>
-              </Breadcrumb.Link>
-            </Breadcrumb.Item>
-            <Breadcrumb.Separator />
-            <Breadcrumb.Item>
-              <Breadcrumb.CurrentLink>
-                {prospect.name} {prospect.lastName}
-              </Breadcrumb.CurrentLink>
-            </Breadcrumb.Item>
-          </Breadcrumb.List>
-        </Breadcrumb.Root>
+    <Stack as="main">
+      <Breadcrumb.Root mb={4}>
+        <Breadcrumb.List>
+          <Breadcrumb.Item>
+            <Breadcrumb.Link asChild>
+              <Link href={"/prospects"}>Prospects</Link>
+            </Breadcrumb.Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Separator />
+          <Breadcrumb.Item>
+            <Breadcrumb.CurrentLink>
+              {prospect.name} {prospect.lastName}
+            </Breadcrumb.CurrentLink>
+          </Breadcrumb.Item>
+        </Breadcrumb.List>
+      </Breadcrumb.Root>
 
-        <Flex alignItems="center" gap={6}>
-          <Heading size="4xl">
-            {prospect.name} {prospect.lastName}
-          </Heading>
-          <ProspectStatusBadge status={prospect.status} size="lg" />
-        </Flex>
-        <Heading>Personal information</Heading>
-        <Flex gap={2}>
-          <Text fontWeight="bold">Date of birth:</Text>
-          <Text>{prospect.birthDate.toLocaleDateString()}</Text>
-        </Flex>
-        <Flex gap={2}>
-          <Text fontWeight="bold">Email:</Text>
-          <Text>{prospect.email}</Text>
-        </Flex>
-        <Flex gap={2}>
-          <Text fontWeight="bold">Phone number:</Text>
-          <Text>{prospect.phoneNumber}</Text>
-        </Flex>
-        <Separator />
-        <Heading>Location information</Heading>
-        <Flex gap={2}>
-          <Text fontWeight="bold">Country:</Text>
-          <Text>{prospect.country}</Text>
-        </Flex>
-        <Flex gap={2}>
-          <Text fontWeight="bold">City:</Text>
-          <Text>{prospect.city}</Text>
-        </Flex>
-        <Flex gap={2}>
-          <Text fontWeight="bold">Full address:</Text>
-          <Text>{prospect.fullAddress}</Text>
-        </Flex>
-        <GoogleMapsEmbed
-          apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? ""}
-          height={400}
-          width={"100%"}
-          mode="place"
-          q={`${prospect.location.lat}, ${prospect.location.lng}`}
-        />
-        <Separator />
-        <Heading>Bank information</Heading>
-        <Flex gap={2}>
-          <Text fontWeight="bold">Bank name:</Text>
-          <Text>{prospect.bankName}</Text>
-        </Flex>
-        <Flex gap={2}>
-          <Text fontWeight="bold">Bank account number:</Text>
-          <Text>{prospect.bankAccountNumber}</Text>
-        </Flex>
-        <Flex gap={2}>
-          <Text fontWeight="bold">Tax ID:</Text>
-          <Text>{prospect.taxId}</Text>
-        </Flex>
-        <Flex gap={2}>
-          <Text fontWeight="bold">Document or passport:</Text>
-          <Text>{prospect.document}</Text>
-        </Flex>
-        <Separator />
-        <Heading>Other information</Heading>
-        <Flex gap={2}>
-          <Text fontWeight="bold">Relevant details:</Text>
-          <Text>{prospect.relevantDetails}</Text>
-        </Flex>
-        <Flex gap={2}>
-          <Text fontWeight="bold">Onboarding attempts:</Text>
-          <Text>{prospect.omboardingAttempts}</Text>
-        </Flex>
-      </Stack>
-    </main>
+      <Flex alignItems="center" gap={6}>
+        <Heading size="4xl">
+          {prospect.name} {prospect.lastName}
+        </Heading>
+        <ProspectStatusBadge status={prospect.status} size="lg" />
+      </Flex>
+      <Heading>Personal information</Heading>
+      <Flex gap={2}>
+        <Text fontWeight="bold">Date of birth:</Text>
+        <Text>{prospect.birthDate.toLocaleDateString()}</Text>
+      </Flex>
+      <Flex gap={2}>
+        <Text fontWeight="bold">Email:</Text>
+        <Text>{prospect.email}</Text>
+      </Flex>
+      <Flex gap={2}>
+        <Text fontWeight="bold">Phone number:</Text>
+        <Text>{prospect.phoneNumber}</Text>
+      </Flex>
+      <Separator />
+      <Heading>Location information</Heading>
+      <Flex gap={2}>
+        <Text fontWeight="bold">Country:</Text>
+        <Text>{prospect.country}</Text>
+      </Flex>
+      <Flex gap={2}>
+        <Text fontWeight="bold">City:</Text>
+        <Text>{prospect.city}</Text>
+      </Flex>
+      <Flex gap={2}>
+        <Text fontWeight="bold">Full address:</Text>
+        <Text>{prospect.fullAddress}</Text>
+      </Flex>
+      <GoogleMapsEmbed
+        apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? ""}
+        height={400}
+        width={"100%"}
+        mode="place"
+        q={`${prospect.location.lat}, ${prospect.location.lng}`}
+      />
+      <Separator />
+      <Heading>Bank information</Heading>
+      <Flex gap={2}>
+        <Text fontWeight="bold">Bank name:</Text>
+        <Text>{prospect.bankName}</Text>
+      </Flex>
+      <Flex gap={2}>
+        <Text fontWeight="bold">Bank account number:</Text>
+        <Text>{prospect.bankAccountNumber}</Text>
+      </Flex>
+      <Flex gap={2}>
+        <Text fontWeight="bold">Tax ID:</Text>
+        <Text>{prospect.taxId}</Text>
+      </Flex>
+      <Flex gap={2}>
+        <Text fontWeight="bold">Document or passport:</Text>
+        <Text>{prospect.document}</Text>
+      </Flex>
+      <Separator />
+      <Heading>Other information</Heading>
+      <Flex gap={2}>
+        <Text fontWeight="bold">Relevant details:</Text>
+        <Text>{prospect.relevantDetails}</Text>
+      </Flex>
+      <Flex gap={2}>
+        <Text fontWeight="bold">Onboarding attempts:</Text>
+        <Text>{prospect.omboardingAttempts}</Text>
+      </Flex>
+    </Stack>
   );
 }
