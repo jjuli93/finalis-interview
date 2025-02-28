@@ -12,6 +12,10 @@ export default function Home() {
         This page contains a list of available links to show the different pages
         of the project
       </Text>
+      <Text>
+        You can include the text &apos;error&apos; on the name field of the new
+        prospect form to trigger an error when submitting the form
+      </Text>
       <Flex gap={4}>
         <Button aria-label="View details" asChild>
           <Link href="/new-prospect">New prospect form</Link>
