@@ -12,6 +12,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProspectActions from "./_components/prospectActions/prospectActions";
 import { getProspect } from "@/services/prospects/actions";
+import { Avatar } from "@/components/chakra-snippets/avatar";
 
 export default async function ProspectDetailPage({
   params,
@@ -51,6 +52,12 @@ export default async function ProspectDetailPage({
         </Flex>
       </Flex>
       <Heading>Personal information</Heading>
+      <Avatar
+        name={prospect.name}
+        src={prospect.profilePhotoUrl}
+        w="200px"
+        h="200px"
+      />
       <Flex gap={2}>
         <Text fontWeight="bold">Date of birth:</Text>
         <Text>{prospect.birthDate.toLocaleDateString()}</Text>
@@ -104,10 +111,10 @@ export default async function ProspectDetailPage({
       </Flex>
       <Separator />
       <Heading>Other information</Heading>
-      <Flex gap={2}>
+      <Stack gap={2}>
         <Text fontWeight="bold">Relevant details:</Text>
         <Text>{prospect.relevantDetails}</Text>
-      </Flex>
+      </Stack>
       <Flex gap={2}>
         <Text fontWeight="bold">Onboarding attempts:</Text>
         <Text>{prospect.omboardingAttempts}</Text>

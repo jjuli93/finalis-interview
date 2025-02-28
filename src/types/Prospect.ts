@@ -1,5 +1,3 @@
-import { Invoice } from "./Invoice";
-
 // This could just be a boolean but I prefer having literals in case there are more statuses in the future
 export type ProspectStatus = "pending" | "approved" | "declined";
 
@@ -27,6 +25,4 @@ export type Prospect = {
   status: ProspectStatus;
   blacklisted: boolean;
   omboardingAttempts: number;
-
-  invoices: Invoice[]; //TODO: only for detail page
 };

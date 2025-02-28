@@ -4,13 +4,3 @@ add tests
 
 authorization and authentication
 refactor newProspectForm
-
-
-provider
-toaster
-tooltip
-fileUpload
-color-mode
-field
-steps
-pagination
