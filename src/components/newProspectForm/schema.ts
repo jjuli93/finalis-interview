@@ -1,11 +1,12 @@
 import { z } from "zod";
 
 export const NewProspectFormSchema = z.object({
-  name: z.string().min(1),
-  lastName: z.string().min(1),
-  birthDate: z.string().min(1),
-  email: z.string().min(1),
-  phoneNumber: z.string().min(1),
+  name: z.string().min(1, "Required"),
+  lastName: z.string().min(1, "Required"),
+  birthDate: z.string().min(1, "Required"),
+  email: z.string().email(),
+  // TODO: validate phone
+  phoneNumber: z.string().min(1, "Required"),
   profilePhoto: z.instanceof(File, { message: "Profile photo is required" }),
   document: z.instanceof(File, { message: "Document or passport is required" }),
   address: z.object(
@@ -20,8 +21,9 @@ export const NewProspectFormSchema = z.object({
     },
     { message: "Address not valid" }
   ),
-  bankName: z.string().min(1),
-  bankAccountNumber: z.string().min(1),
-  taxId: z.string().min(1),
+  bankName: z.string().min(1, "Required"),
+  // TODO: should this be a number
+  bankAccountNumber: z.string().min(1, "Required"),
+  taxId: z.string().min(1, "Required"),
   relevantDetails: z.string().optional(),
 });

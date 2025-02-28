@@ -1,5 +1,9 @@
-//TODO: fix
-export function submitForm(values: any) {
+import { NewProspectFormSchema } from "@/components/newProspectForm/schema";
+import { z } from "zod";
+
+export async function createProspect(
+  values: z.infer<typeof NewProspectFormSchema>
+) {
   const formData = new FormData();
   const {
     profilePhoto,
@@ -27,11 +31,14 @@ export function submitForm(values: any) {
   formData.append("phoneNumber", phoneNumber);
   formData.append("taxId", taxId);
   formData.append("relevantDetails", relevantDetails ?? "");
-  formData.append("relevantDetails", relevantDetails ?? "");
   formData.append("country", address.country);
   formData.append("city", address.city);
   formData.append("fullAddress", address.fullAddress);
   formData.append("location", JSON.stringify(address.location));
 
-  console.log({ formData });
+  await new Promise((r) => setTimeout(r, 2000));
+  if (name.includes("error")) {
+    throw new Error("a");
+  }
+  // TODO: make request
 }

@@ -1,6 +1,5 @@
 remove unused chakra snippets
 delete console logs
-phone, email validations
 use uppercase for components
 add tags to requests
 add profile pictures and document pictures to prospect detail page
@@ -12,3 +11,6 @@ error abajo del select
 success page
 anadir blacklist flujo
 icono buscar a detalle
+
+authorization and authentication
+refactor newProspectForm

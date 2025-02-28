@@ -1,5 +1,5 @@
-import { getProspects } from "@/actions/prospect";
 import ProspectsTable from "@/components/prospectTable/prospectTable";
+import { getProspects } from "@/services/prospects/actions";
 import { Heading, Stack, Tabs } from "@chakra-ui/react";
 import { LuCheck, LuOctagonAlert, LuUser } from "react-icons/lu";
 

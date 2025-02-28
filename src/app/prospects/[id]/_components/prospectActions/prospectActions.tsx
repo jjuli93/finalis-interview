@@ -1,7 +1,7 @@
 "use client";
 
-import { approveProspect, rejectProspect } from "@/actions/prospect";
 import { Tooltip } from "@/components/chakra-snippets/tooltip";
+import { approveProspect, rejectProspect } from "@/services/prospects/actions";
 import { Prospect } from "@/types/Prospect";
 import { Badge, IconButton } from "@chakra-ui/react";
 import { LuCheck, LuOctagonAlert, LuX } from "react-icons/lu";

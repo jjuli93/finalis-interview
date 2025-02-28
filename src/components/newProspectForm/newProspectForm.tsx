@@ -2,7 +2,6 @@
 
 import { Field } from "@/components/chakra-snippets/field";
 import {
-  StepsCompletedContent,
   StepsContent,
   StepsItem,
   StepsList,
@@ -17,11 +16,9 @@ import {
   Input,
   Stack,
   StepsChangeDetails,
-  Text,
   Textarea,
 } from "@chakra-ui/react";
 import {
-  LuBadgeCheck,
   LuBanknote,
   LuMapPinHouse,
   LuNotebookText,
@@ -38,8 +35,15 @@ import { getCountryCurrencies } from "@/lib/restCountries";
 import { Inputs, LAST_STEP_INDEX, STEP_INPUT_NAMES, USD } from "./constants";
 import { toaster } from "../chakra-snippets/toaster";
 import ImageInput from "../imageInput/imageInput";
+import { createProspect as createProspectMutation } from "@/services/prospects";
+import { useAsyncCallback } from "@/hooks/useAsyncCallback";
+import { useRouter } from "next/navigation";
 
 export default function NewProspectForm() {
+  const [{ isLoading }, createProspect] = useAsyncCallback(
+    createProspectMutation
+  );
+  const router = useRouter();
   const [step, setStep] = useState(0);
   const {
     handleSubmit,
@@ -47,13 +51,10 @@ export default function NewProspectForm() {
     formState: { errors },
     control,
     setValue,
-    watch,
   } = useForm<Inputs>({
     resolver: zodResolver(NewProspectFormSchema),
     mode: "onChange",
   });
-
-  console.log(watch("address"));
 
   const handleStepChange = async ({
     step: selectedStep,
@@ -68,7 +69,11 @@ export default function NewProspectForm() {
     setStep(selectedStep);
   };
 
-  const handleFormSubmit: SubmitHandler<Inputs> = (values) => {};
+  const handleFormSubmit: SubmitHandler<Inputs> = (values) => {
+    createProspect(values).then(() => {
+      router.push("/new-prospect/success");
+    });
+  };
 
   // It would be best to refactor the component to use native inputs/events to avoid manually setting values and triggering validation
   const handleAddressChange = async (location: Location | null) => {
@@ -310,18 +315,12 @@ export default function NewProspectForm() {
               </StepsNextTrigger>
             </Group>
           ) : (
-            <Button type="submit">Submit information</Button>
+            <Button type="submit" loading={isLoading}>
+              Submit information
+            </Button>
           )}
         </Stack>
       </form>
-
-      <StepsCompletedContent>
-        <Stack alignItems="center">
-          <LuBadgeCheck color="green" size="100px" />
-          <Heading size="3xl">Your registration is complete!</Heading>
-          <Text>We will be in touch soon..</Text>
-        </Stack>
-      </StepsCompletedContent>
     </StepsRoot>
   );
 }

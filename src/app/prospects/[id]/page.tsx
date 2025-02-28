@@ -11,7 +11,7 @@ import { GoogleMapsEmbed } from "@next/third-parties/google";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProspectActions from "./_components/prospectActions/prospectActions";
-import { getProspect } from "@/actions/prospect";
+import { getProspect } from "@/services/prospects/actions";
 
 export default async function ProspectDetailPage({
   params,
