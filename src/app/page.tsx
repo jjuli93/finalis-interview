@@ -2,8 +2,6 @@ import { Button, Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 export default function Home() {
-  // TODO: check if user is logged in and redirect
-
   return (
     <Stack as="main" alignItems="center" gap={4}>
       <Heading size="4xl">Finalis interview project</Heading>
