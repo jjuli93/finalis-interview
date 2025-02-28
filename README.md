@@ -38,7 +38,7 @@ You can check needed environment variables in [.example.env](.example.env)
 
 ### Assumptions
 1. I assumed that the backend was in charge of blacklisting people
-2. I assumend that the backend was in charge of counting the number of times a user did the onboarding by merging onboarding proceses of the same person, updating the information and adding a count to the  `onboardingAttempts` prospect property
+2. I assumed that the backend was in charge of counting the number of times a user did the onboarding by merging onboarding proceses of the same person, updating the information and adding a count to the  `onboardingAttempts` prospect property
 
 ### Missing
 1. I couldn't complete the invoice management feature. I was running out of time and I didn't want to hand over the excercise after the deadline
