@@ -35,7 +35,6 @@ You can check needed environment variables in [.example.env](.example.env)
 
 ### Other
 1. I left some TODOs comments on components with some improvements suggestions
-2. I left some code commented out 
 
 ### Assumptions
 1. I assumed that the backend was in charge of blacklisting people
