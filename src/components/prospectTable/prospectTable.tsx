@@ -9,15 +9,20 @@ import {
   PaginationPrevTrigger,
   PaginationRoot,
 } from "../chakra-snippets/pagination";
-import { Pagination } from "@/types/Pagination";
+import { PageChangeDetails, Pagination } from "@/types/Pagination";
 
 type Props = {
   prospects: Prospect[];
   pagination?: Pagination;
+  onPageChange?: (pageChangeDetails: PageChangeDetails) => void;
 };
 
-//TODO: add pagination logic, filtering and ordering
-export default async function ProspectsTable({ prospects, pagination }: Props) {
+//TODO: add filtering and ordering
+export default async function ProspectsTable({
+  prospects,
+  pagination,
+  onPageChange,
+}: Props) {
   return (
     <Stack>
       <Table.Root>
@@ -26,7 +31,7 @@ export default async function ProspectsTable({ prospects, pagination }: Props) {
             <Table.ColumnHeader>Name</Table.ColumnHeader>
             <Table.ColumnHeader>Lastname</Table.ColumnHeader>
             <Table.ColumnHeader>Status</Table.ColumnHeader>
-            <Table.ColumnHeader>Actions</Table.ColumnHeader>
+            <Table.ColumnHeader>Review</Table.ColumnHeader>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -56,6 +61,7 @@ export default async function ProspectsTable({ prospects, pagination }: Props) {
           defaultPage={1}
           variant="solid"
           alignSelf="flex-end"
+          onPageChange={onPageChange}
         >
           <HStack>
             <PaginationPrevTrigger />

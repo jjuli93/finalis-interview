@@ -3,3 +3,5 @@ export type Pagination = {
   pageSize: number;
   totalPages: number;
 };
+
+export type PageChangeDetails = { page: number; pageSize: number };

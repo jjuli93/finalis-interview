@@ -4,7 +4,7 @@ import { approveProspect, rejectProspect } from "@/actions/prospect";
 import { Tooltip } from "@/components/chakra-snippets/tooltip";
 import { Prospect } from "@/types/Prospect";
 import { Badge, IconButton } from "@chakra-ui/react";
-import { LuCheck, LuCircleSlash, LuOctagonAlert } from "react-icons/lu";
+import { LuCheck, LuOctagonAlert, LuX } from "react-icons/lu";
 
 type Props = {
   prospect: Prospect;
@@ -37,7 +37,7 @@ export default function ProspectActions({ prospect }: Props) {
             aria-label="Reject prospect"
             onClick={() => rejectProspect(prospect.id)}
           >
-            <LuCircleSlash />
+            <LuX />
           </IconButton>
         </Tooltip>
       )}
