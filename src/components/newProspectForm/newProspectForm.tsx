@@ -54,6 +54,17 @@ export default function NewProspectForm() {
   } = useForm<Inputs>({
     resolver: zodResolver(NewProspectFormSchema),
     mode: "onChange",
+    defaultValues: {
+      name: "",
+      lastName: "",
+      bankAccountNumber: "",
+      birthDate: "",
+      bankName: "",
+      email: "",
+      phoneNumber: "",
+      relevantDetails: "",
+      taxId: "",
+    },
   });
 
   const handleStepChange = async ({

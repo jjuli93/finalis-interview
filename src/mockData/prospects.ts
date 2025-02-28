@@ -84,7 +84,7 @@ export const prospects: Prospect[] = [
     city: "Chicago",
     country: "USA",
     document: "11112223333",
-    email: "mabeltannerhgmail.com",
+    email: "mabeltanner@gmail.com",
     fullAddress: "3823 N Park St, Westmont, IL 60559, USA",
     location: {
       lat: 41.81742442937551,

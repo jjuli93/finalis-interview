@@ -10,11 +10,11 @@ export default function Home() {
       <Heading>Julián Álvarez</Heading>
       <Text>
         This page contains a list of available links to show the different pages
-        of the project
+        of the project.
       </Text>
       <Text>
-        You can include the text &apos;error&apos; on the name field of the new
-        prospect form to trigger an error when submitting the form
+        To trigger an error when submitting the new prospect form, you can
+        include the text &apos;error&apos; on the name field.
       </Text>
       <Flex gap={4}>
         <Button aria-label="View details" asChild>

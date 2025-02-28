@@ -1,6 +1,4 @@
 use uppercase for components
-add profile pictures and document pictures to prospect detail page
 add tests
-
 authorization and authentication
 refactor newProspectForm
