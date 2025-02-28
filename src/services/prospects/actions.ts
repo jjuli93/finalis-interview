@@ -9,6 +9,7 @@ import { ProspectStatus } from "@/types/Prospect";
 // import { revalidateTag } from "next/cache";
 
 export async function approveProspect(prospectId: string) {
+  await new Promise((r) => setTimeout(r, 2000));
   console.log({ prospectId });
 
   //TODO: make request
@@ -19,6 +20,7 @@ export async function approveProspect(prospectId: string) {
 }
 
 export async function rejectProspect(prospectId: string) {
+  await new Promise((r) => setTimeout(r, 2000));
   console.log({ prospectId });
 
   //TODO: make request

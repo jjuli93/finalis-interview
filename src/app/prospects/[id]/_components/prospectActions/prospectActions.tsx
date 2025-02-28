@@ -1,9 +1,13 @@
 "use client";
 
 import { Tooltip } from "@/components/chakra-snippets/tooltip";
-import { approveProspect, rejectProspect } from "@/services/prospects/actions";
+import { useAsyncCallback } from "@/hooks/useAsyncCallback";
+import {
+  approveProspect as approveProspectMutation,
+  rejectProspect as rejectProspectMutation,
+} from "@/services/prospects/actions";
 import { Prospect } from "@/types/Prospect";
-import { Badge, IconButton } from "@chakra-ui/react";
+import { Badge, IconButton, Spinner } from "@chakra-ui/react";
 import { LuCheck, LuOctagonAlert, LuX } from "react-icons/lu";
 
 type Props = {
@@ -11,6 +15,13 @@ type Props = {
 };
 
 export default function ProspectActions({ prospect }: Props) {
+  const [approveProspectStatus, approveProspect] = useAsyncCallback(
+    approveProspectMutation
+  );
+  const [rejectProspectStatus, rejectProspect] = useAsyncCallback(
+    rejectProspectMutation
+  );
+
   if (prospect.blacklisted)
     return (
       <Badge colorPalette="black" size="lg" fontWeight="bold">
@@ -18,6 +29,9 @@ export default function ProspectActions({ prospect }: Props) {
         Blacklisted
       </Badge>
     );
+
+  if (approveProspectStatus.isLoading || rejectProspectStatus.isLoading)
+    return <Spinner size="xl" />;
 
   return (
     <>
