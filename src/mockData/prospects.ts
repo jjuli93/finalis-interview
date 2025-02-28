@@ -17,7 +17,7 @@ export const prospects: Prospect[] = [
     },
     lastName: "Levy",
     name: "Bryan Cameron",
-    omboardingAttempts: 1,
+    onboardingAttempts: 1,
     phoneNumber: "+1415 555 3414",
     profilePhotoUrl: "/mock-data/1.jpeg",
     relevantDetails:
@@ -42,7 +42,7 @@ export const prospects: Prospect[] = [
     },
     lastName: "Bennett",
     name: "Lucinda",
-    omboardingAttempts: 1,
+    onboardingAttempts: 1,
     phoneNumber: "+1303 555 1389",
     profilePhotoUrl: "/mock-data/2.jpeg",
     relevantDetails:
@@ -67,7 +67,7 @@ export const prospects: Prospect[] = [
     },
     lastName: "Branch",
     name: "Charles",
-    omboardingAttempts: 1,
+    onboardingAttempts: 1,
     phoneNumber: "+1615 333 2456",
     profilePhotoUrl: "/mock-data/3.jpeg",
     relevantDetails:
@@ -92,7 +92,7 @@ export const prospects: Prospect[] = [
     },
     lastName: "Tanner",
     name: "Mabel",
-    omboardingAttempts: 1,
+    onboardingAttempts: 1,
     phoneNumber: "+1312 444 2345",
     profilePhotoUrl: "/mock-data/4.jpeg",
     relevantDetails:

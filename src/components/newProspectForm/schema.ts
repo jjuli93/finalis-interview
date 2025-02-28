@@ -22,7 +22,7 @@ export const NewProspectFormSchema = z.object({
     { message: "Address not valid" }
   ),
   bankName: z.string().min(1, "Required"),
-  // TODO: should this be a number
+  // TODO: should this be a number?
   bankAccountNumber: z.string().min(1, "Required"),
   taxId: z.string().min(1, "Required"),
   relevantDetails: z.string().optional(),

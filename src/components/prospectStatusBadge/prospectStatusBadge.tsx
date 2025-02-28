@@ -7,7 +7,6 @@ type Props = {
   status: ProspectStatus;
 };
 
-//TODO: check dark mode colors
 const statuses: {
   [status in ProspectStatus]: { label: string; color: string };
 } = {

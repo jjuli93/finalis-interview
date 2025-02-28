@@ -62,7 +62,6 @@ type Props = {
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
 };
 
-//TODO: make component props
 export default function ImageInput({ inputProps }: Props) {
   function handleFileReject(e: FileUploadFileRejectDetails) {
     if (e.files.length) toaster.error({ description: "File not supported" });

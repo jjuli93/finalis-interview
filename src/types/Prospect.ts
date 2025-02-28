@@ -24,5 +24,5 @@ export type Prospect = {
 
   status: ProspectStatus;
   blacklisted: boolean;
-  omboardingAttempts: number;
+  onboardingAttempts: number;
 };

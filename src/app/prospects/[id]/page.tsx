@@ -117,7 +117,7 @@ export default async function ProspectDetailPage({
       </Stack>
       <Flex gap={2}>
         <Text fontWeight="bold">Onboarding attempts:</Text>
-        <Text>{prospect.omboardingAttempts}</Text>
+        <Text>{prospect.onboardingAttempts}</Text>
       </Flex>
     </Stack>
   );
