@@ -1,12 +1,16 @@
-remove unused chakra snippets
 use uppercase for components
 add profile pictures and document pictures to prospect detail page
-add suspense
 add tests
-toast soolo sale una vez
-error abajo del select
-anadir blacklist flujo
-icono buscar a detalle
 
 authorization and authentication
 refactor newProspectForm
+
+
+provider
+toaster
+tooltip
+fileUpload
+color-mode
+field
+steps
+pagination
