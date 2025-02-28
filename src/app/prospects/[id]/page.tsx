@@ -1,5 +1,4 @@
 import { ProspectStatusBadge } from "@/components/prospectStatusBadge/prospectStatusBadge";
-import { prospects } from "@/mockData/prospects";
 import {
   Breadcrumb,
   Flex,
@@ -12,10 +11,7 @@ import { GoogleMapsEmbed } from "@next/third-parties/google";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProspectActions from "./_components/prospectActions/prospectActions";
-
-async function getProspect(id: string) {
-  return prospects.find((prospect) => prospect.id === id);
-}
+import { getProspect } from "@/actions/prospect";
 
 export default async function ProspectDetailPage({
   params,

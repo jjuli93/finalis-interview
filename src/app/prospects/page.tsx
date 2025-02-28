@@ -1,47 +1,25 @@
-import { ProspectStatusBadge } from "@/components/prospectStatusBadge/prospectStatusBadge";
-import { prospects } from "@/mockData/prospects";
-import { Heading, IconButton, Stack, Table } from "@chakra-ui/react";
-import Link from "next/link";
-import { LuSearch } from "react-icons/lu";
+import { getProspects } from "@/actions/prospect";
+import ProspectsTable from "@/components/prospectTable/prospectTable";
+import { Flex, Heading, Separator, Stack } from "@chakra-ui/react";
 
-async function getProspects() {
-  return prospects;
-}
-//TODO: add pagination
+//I would advice having one table with filters instead of having two separate tables (as requested)
 export default async function ProspectsPage() {
   const prospects = await getProspects();
 
   return (
-    <Stack as="main">
-      <Heading size="4xl">Prospects</Heading>
-      <Table.Root>
-        <Table.Header>
-          <Table.Row>
-            <Table.ColumnHeader>Name</Table.ColumnHeader>
-            <Table.ColumnHeader>Lastname</Table.ColumnHeader>
-            <Table.ColumnHeader>Status</Table.ColumnHeader>
-            <Table.ColumnHeader>Actions</Table.ColumnHeader>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {prospects.map((prospect) => (
-            <Table.Row key={prospect.id}>
-              <Table.Cell>{prospect.name}</Table.Cell>
-              <Table.Cell>{prospect.lastName}</Table.Cell>
-              <Table.Cell>
-                <ProspectStatusBadge status={prospect.status} />
-              </Table.Cell>
-              <Table.Cell>
-                <IconButton aria-label="View details" asChild>
-                  <Link key={prospect.id} href={`/prospects/${prospect.id}`}>
-                    <LuSearch />
-                  </Link>
-                </IconButton>
-              </Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table.Root>
-    </Stack>
+    <Flex as="main" w="100%" alignItems="stretch" gap={8}>
+      <Stack flex={1}>
+        <Heading size="4xl">Prospects</Heading>
+        <ProspectsTable
+          prospects={prospects}
+          pagination={{ page: 1, pageSize: 10, totalPages: 1 }}
+        />
+      </Stack>
+      <Separator orientation="vertical" />
+      <Stack flex={1}>
+        <Heading size="4xl">Approved prospects</Heading>
+        <ProspectsTable prospects={prospects} />
+      </Stack>
+    </Flex>
   );
 }

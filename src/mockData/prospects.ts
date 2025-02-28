@@ -24,6 +24,7 @@ export const prospects: Prospect[] = [
     relevantDetails: "relevant details",
     status: "pending",
     taxId: "123",
+    blacklisted: false,
   },
   {
     id: "bd0a35e8-2166-46af-ae7c-771c6d118d62",
@@ -48,6 +49,7 @@ export const prospects: Prospect[] = [
     relevantDetails: "relevant details",
     status: "approved",
     taxId: "123",
+    blacklisted: false,
   },
   {
     id: "bd0a35e8-2166-46af-ae7c-771c6d118d64",
@@ -72,5 +74,6 @@ export const prospects: Prospect[] = [
     relevantDetails: "relevant details",
     status: "declined",
     taxId: "123",
+    blacklisted: true,
   },
 ];

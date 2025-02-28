@@ -25,7 +25,8 @@ export type Prospect = {
   relevantDetails: string;
 
   status: ProspectStatus;
-  omboardingAttempts: number; //TODO: is this ok? or is it only for blackListed prospects and should have another entity?
+  blacklisted: boolean;
+  omboardingAttempts: number;
 
   invoices: Invoice[]; //TODO: only for detail page
 };

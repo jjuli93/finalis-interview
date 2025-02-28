@@ -1,6 +1,9 @@
 remove unused chakra snippets
-I can click on the steps and they don't have any validation
 delete console logs
 phone, email validations
 use uppercase for components
 add tags to requests
+add profile pictures and document pictures to prospect detail page
+add suspense
+add error handling
+add tests
